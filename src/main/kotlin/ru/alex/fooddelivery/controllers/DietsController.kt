@@ -20,9 +20,14 @@ class DietsController(
         return dietService.create(diet)
     }
 
-    @PatchMapping
-    suspend fun update(@Valid @RequestBody diet: DietUpdateDto): DietDto {
-        return dietService.update(diet)
+    @PostMapping("restore/{id}")
+    suspend fun restore(@PathVariable id: UUID): DietDto? {
+        return dietService.restore(id)
+    }
+
+    @PatchMapping("/{id}")
+    suspend fun update(@Valid @RequestBody diet: DietUpdateDto, @PathVariable id: UUID): DietDto {
+        return dietService.update(diet, id)
     }
 
     @DeleteMapping("/{id}")

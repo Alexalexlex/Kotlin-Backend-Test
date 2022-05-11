@@ -14,4 +14,7 @@ interface DietRepository : CoroutineCrudRepository<DietEntity, UUID> {
 
     @Query("UPDATE diets SET deleted_at = CURRENT_TIMESTAMP WHERE id = :id")
     override suspend fun deleteById(id: UUID)
+
+    @Query("UPDATE diets SET deleted_at = NULL WHERE id = :id")
+    suspend fun restoreById(id: UUID): DietEntity
 }

@@ -25,8 +25,8 @@ class DietService(
         ).asNew()).toDto()
     }
 
-    suspend fun update(diet: DietUpdateDto): DietDto {
-        val dietEntity = dietRepository.findOneByDeletedAtIsNull(diet.id) ?: throw RuntimeException("Diet not found")
+    suspend fun update(diet: DietUpdateDto, id: UUID): DietDto {
+        val dietEntity = dietRepository.findOneByDeletedAtIsNull(id) ?: throw RuntimeException("Diet not found")
 
         return dietRepository.save(dietEntity.copy(
             title = diet.title ?: dietEntity.title,
@@ -39,6 +39,12 @@ class DietService(
     suspend fun delete(id: UUID) {
         dietRepository.findOneByDeletedAtIsNull(id) ?: throw RuntimeException("Diet not found")
         dietRepository.deleteById(id)
+    }
+
+    suspend fun restore(id: UUID):  DietDto? {
+        dietRepository.findById(id) ?: throw RuntimeException("Diet not found")
+        dietRepository.restoreById(id)?.toDto()
+        return dietRepository.findOneByDeletedAtIsNull(id)?.toDto()
     }
 
     suspend fun getAll(): Flow<DietDto> {
