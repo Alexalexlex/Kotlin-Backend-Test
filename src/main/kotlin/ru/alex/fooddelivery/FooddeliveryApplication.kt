@@ -27,7 +27,7 @@ enum class HttpStatus(val status: Int) {
 
 data class Clazz(
     val id: UUID = UUID.randomUUID(),
-    val i: Int = random.nextInt(0, 10),
+//    val i: Int = random.nextInt(0, 10),
     val type: HttpStatus
 ) {
     companion object {

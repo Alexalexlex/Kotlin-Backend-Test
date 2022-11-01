@@ -32,7 +32,6 @@ class DietService(
             title = diet.title ?: dietEntity.title,
             description = diet.description ?: dietEntity.description,
             image = diet.image ?: dietEntity.image,
-            updatedAt = Instant.now()
         )).toDto()
     }
 

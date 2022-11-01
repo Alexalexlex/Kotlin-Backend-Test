@@ -11,7 +11,7 @@ import java.util.*
 interface DietRepository : CoroutineCrudRepository<DietEntity, UUID> {
     fun findAllByDeletedAtIsNull(): Flow<DietEntity>
     suspend fun findOneByDeletedAtIsNull(id: UUID): DietEntity?
-
+    
     @Query("UPDATE diets SET deleted_at = CURRENT_TIMESTAMP WHERE id = :id")
     override suspend fun deleteById(id: UUID)
 
