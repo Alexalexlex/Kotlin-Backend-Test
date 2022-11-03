@@ -4,6 +4,6 @@ server:
 
 spring:
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/alex
-    username: postgres
-    password: postgres
+    url: r2dbc:postgresql://localhost:5432/kotlin
+    username: user
+    password: password

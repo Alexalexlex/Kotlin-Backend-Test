@@ -4,7 +4,6 @@ import ru.alex.fooddelivery.db.entity.DietEntity
 import ru.alex.fooddelivery.db.entity.UserEntity
 import ru.alex.fooddelivery.dto.DietDto
 import ru.alex.fooddelivery.dto.UserDto
-import java.util.*
 
 fun DietEntity.toDto() = DietDto(
     id = id,

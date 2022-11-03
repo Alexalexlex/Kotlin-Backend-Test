@@ -3,13 +3,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.6.6"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.6.10"
+	kotlin("jvm") version "1.7.20"
 	kotlin("plugin.spring") version "1.6.10"
 }
 
 group = "ru.alex"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_19
 
 repositories {
 	mavenCentral()
@@ -30,8 +30,12 @@ dependencies {
 
 	implementation("io.r2dbc:r2dbc-postgresql")
 
+	implementation ("org.springframework.boot:spring-boot-starter-security")
+	testImplementation ("org.springframework.security:spring-security-test")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
+
 }
 
 tasks.withType<KotlinCompile> {
